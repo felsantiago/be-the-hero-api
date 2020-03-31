@@ -14,7 +14,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
-      directory: path.resolve('..', 'database', 'migrations'),
+      directory: path.resolve(__dirname, '..', 'database', 'migrations'),
     },
     useNullAsDefault: true,
   },
@@ -28,7 +28,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
-      directory: path.resolve('src', 'database', 'migrations'),
+      directory: path.resolve(__dirname, '..', 'database', 'migrations'),
     },
     useNullAsDefault: true,
   },
