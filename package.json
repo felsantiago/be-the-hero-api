@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon src/server.js",
     "dev:debug": "NODE_ENV=development nodemon --inspect src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js",
     "test": "cross-env NODE_ENV=test jest",
     "knex": "node_modules/.bin/knex --knexfile=src/config/knexfile.js"
   },
