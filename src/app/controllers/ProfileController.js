@@ -2,10 +2,10 @@ import connection from '../../config/database';
 
 class ProfileController {
   async index(req, res) {
-    const ong_id = req.userUuid;
+    const ong_uuid = req.userUuid;
 
     const incidents = await connection('incidents')
-      .where('ong_id', ong_id)
+      .where('ong_uuid', ong_uuid)
       .select('*');
 
     return res.json(incidents);
