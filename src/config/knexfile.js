@@ -2,7 +2,7 @@ require('../bootstrap');
 
 module.exports = {
   development: {
-    client: process.env.DB_DIALECT,
+    client: 'pg',
     connection: process.env.DATABASE_URL,
     // connection: {
     //   database: process.env.DB_NAME,
