@@ -29,6 +29,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
+      directory: '../database/migrations',
     },
   },
 };
