@@ -7,7 +7,7 @@
     "dev": "nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
-    "start": "node dist/server.js",
+    "start": "node_modules/.bin/knex --knexfile=src/config/knexfile.js migrate:latest node dist/server.js",
     "test": "cross-env NODE_ENV=test jest",
     "knex": "node_modules/.bin/knex --knexfile=src/config/knexfile.js"
   },
