@@ -1,3 +1,5 @@
+import path from 'path';
+
 require('../bootstrap');
 
 module.exports = {
@@ -29,7 +31,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'migrations',
-      directory: '../database/migrations',
+      directory: path.resolve('src', 'database', 'migrations'),
     },
   },
 };
