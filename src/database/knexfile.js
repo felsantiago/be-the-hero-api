@@ -3,13 +3,13 @@ require('../bootstrap');
 module.exports = {
   development: {
     client: process.env.DB_DIALECT || 'sqlite3',
-    connection: process.env.DATABASE_URL,
-    // connection: {
-    //   database: process.env.DB_NAME,
-    //   user: process.env.DB_USER,
-    //   password: process.env.DB_PASS,
-    //   filename: process.env.STORAGE || './src/database/db.sqlite',
-    // },
+    connection: {
+      host: process.env.DB_HOST,
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      filename: process.env.STORAGE || './src/database/db.sqlite',
+    },
     pool: {
       min: 2,
       max: 10,
