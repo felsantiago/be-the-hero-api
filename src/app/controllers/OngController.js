@@ -21,6 +21,14 @@ class OngController {
 
       const passwordHash = await bcryptjs.hash(password, 8);
 
+      const userExists = await connection('ongs')
+        .where('email', email)
+        .select('*')
+        .first();
+
+      if (userExists)
+        return res.status(400).json({ error: 'User already exists.' });
+
       await connection('ongs').insert({
         uuid,
         name,
