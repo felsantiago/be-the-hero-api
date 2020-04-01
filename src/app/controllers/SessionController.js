@@ -5,31 +5,35 @@ import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
-    const { email, password } = req.body;
+    try {
+      const { email, password } = req.body;
 
-    const ong = await connection('ongs')
-      .where('email', email)
-      .select('*')
-      .first();
+      const ong = await connection('ongs')
+        .where('email', email)
+        .select('*')
+        .first();
 
-    if (!ong)
-      return res.status(401).json({ error: 'invalid user or password' });
+      if (!ong)
+        return res.status(401).json({ error: 'invalid user or password' });
 
-    if (!(await bcryptjs.compare(password, ong.password)))
-      return res.status(401).json({ error: 'invalid user or password' });
+      if (!(await bcryptjs.compare(password, ong.password)))
+        return res.status(401).json({ error: 'invalid user or password' });
 
-    const { uuid, name } = ong;
+      const { uuid, name } = ong;
 
-    return res.json({
-      ong: {
-        uuid,
-        name,
-        email,
-      },
-      token: jwt.sign({ uuid }, authConfig.secret, {
-        expiresIn: authConfig.expiresIn,
-      }),
-    });
+      return res.json({
+        ong: {
+          uuid,
+          name,
+          email,
+        },
+        token: jwt.sign({ uuid }, authConfig.secret, {
+          expiresIn: authConfig.expiresIn,
+        }),
+      });
+    } catch (err) {
+      return res.status(500).json({ erro: 'Erro inesperado.' });
+    }
   }
 }
 

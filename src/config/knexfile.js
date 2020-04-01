@@ -3,14 +3,12 @@ require('../bootstrap');
 
 module.exports = {
   development: {
-    client: process.env.DB_DIALECT || 'sqlite3',
+    client: 'pg',
     connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      filename:
-        process.env.STORAGE ||
-        path.resolve(__dirname, '..', 'database', 'db.sqlite'),
+      host: 'localhost',
+      database: 'be_the_hero',
+      user: 'postgres',
+      password: 'docker',
     },
     migrations: {
       tableName: 'migrations',
